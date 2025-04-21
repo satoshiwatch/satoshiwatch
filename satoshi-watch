@@ -1,0 +1,5 @@
+📂 satoshiwatch/              ← raiz do repositório
+├── index.html                ← deve estar aqui
+├── app.js
+├── style.css
+└── manifest.json
