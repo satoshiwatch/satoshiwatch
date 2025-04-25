@@ -1,0 +1,130 @@
+# satoshi-watch-exc-game
+ganhar satoshis
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satoshi Watch Exchange Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Satoshi Watch Exchange Game</h1>
+    </header>
+    <main>
+        <section id="register">
+            <h2>Registro</h2>
+            <p>Registre-se com sua carteira Zebedee:</p>
+            <input type="text" id="zebedee-wallet" placeholder="Digite sua carteira Zebedee">
+            <button id="register-btn">Registrar</button>
+        </section>
+
+        <section id="videos" style="display: none;">
+            <h2>Assista a Vídeos</h2>
+            <p>Assista ao vídeo abaixo para ganhar Satoshis:</p>
+            <video id="video-player" controls>
+                <source src="assets/videos/demo-video.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <button id="claim-reward" disabled>Reclamar Recompensa</button>
+        </section>
+
+        <section id="rewards">
+            <h2>Recompensas</h2>
+            <p>Total de Satoshis: <span id="total-satoshis">0</span></p>
+            <button id="withdraw-btn" disabled>Sacar</button>
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por Satoshi Watch Exchange Game</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+"Adicionar arquivos iniciais do jogo").
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+}
+"Adicionar arquivos iniciais do jogo").
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 1em;
+    text-align: center;
+}
+
+main {
+    padding: 2em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+button {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+footer {
+    text-align: center;
+    padding: 1em;
+    background-color: #222;
+    color: #fff;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    const registerButton = document.getElementById('register-btn');
+    const claimRewardButton = document.getElementById('claim-reward');
+    const withdrawButton = document.getElementById('withdraw-btn');
+    const totalSatoshisElement = document.getElementById('total-satoshis');
+    const videoPlayer = document.getElementById('video-player');
+
+    let totalSatoshis = 0;
+
+    registerButton.addEventListener('click', () => {
+        const wallet = document.getElementById('zebedee-wallet').value;
+        if (wallet) {
+            alert('Carteira registrada com sucesso!');
+            document.getElementById('videos').style.display = 'block';
+        } else {
+            alert('Por favor, insira uma carteira Zebedee válida.');
+        }
+    });
+
+    videoPlayer.addEventListener('ended', () => {
+        claimRewardButton.disabled = false;
+    });
+
+    claimRewardButton.addEventListener('click', () => {
+        totalSatoshis += 5;
+        totalSatoshisElement.textContent = totalSatoshis;
+        claimRewardButton.disabled = true;
+
+        if (totalSatoshis >= 10000) {
+            withdrawButton.disabled = false;
+        }
+    });
+
+    withdrawButton.addEventListener('click', () => {
+        alert('Solicitação de saque enviada. Processaremos manualmente.');
+        totalSatoshis = 0;
+        totalSatoshisElement.textContent = totalSatoshis;
+        withdrawButton.disabled = true;
+    });
+});
+"Adicionar arquivos iniciais do jogo").
